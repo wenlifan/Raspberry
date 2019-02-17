@@ -14,6 +14,7 @@ BtnPin  = 19
 Gpin    = 5
 Rpin    = 6
 
+# 移动类的实例化，及初始化
 MyMontion = Move()
 MyMontion.init_GPIO()
 

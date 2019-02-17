@@ -5,6 +5,7 @@ import lirc as pylirc
 import time
 import RPi.GPIO as GPIO
 
+# 控制小车的运动(固定了使用的IO口)
 class Move:
     def __init__(self):
         # 初始化的端口 BCM模式
@@ -91,3 +92,6 @@ class Move:
         GPIO.output(self.BIN2,True)#BIN2
         GPIO.output(self.BIN1,False) #BIN1
         time.sleep(t_time)
+
+    def __del__(self):
+        GPIO.cleanup([18,22,27,23,25,24])
