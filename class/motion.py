@@ -1,9 +1,5 @@
 #!/usr/bin/python
-<<<<<<< HEAD
-# coding=utf-8
-=======
 # coding=ufg-8
->>>>>>> 800c17f88fa998704821414b7ca18020ba6b9f0a
 
 import lirc as pylirc
 import time
