@@ -1,5 +1,9 @@
 #!/usr/bin/python
+<<<<<<< HEAD
 # coding=utf-8
+=======
+# coding=ufg-8
+>>>>>>> 800c17f88fa998704821414b7ca18020ba6b9f0a
 
 import lirc as pylirc
 import time
@@ -43,12 +47,10 @@ class Move:
     	self.L_Motor.ChangeDutyCycle(speed)
         GPIO.output(self.AIN2,False)#AIN2
         GPIO.output(self.AIN1,True) #AIN1
-
         self.R_Motor.ChangeDutyCycle(speed)
         GPIO.output(self.BIN2,False)#BIN2
         GPIO.output(self.BIN1,True) #BIN1
         time.sleep(t_time)
-
     # 停止
     def t_stop(self,t_time):
         self.L_Motor.ChangeDutyCycle(0)
