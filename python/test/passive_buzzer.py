@@ -4,12 +4,12 @@
 #	This is a program for Passive Buzzer Module
 #		It will play simple songs.
 #	You could try to make songs by youselves!
-# 
-#		Passive buzzer 			   Pi 
+#
+#		Passive buzzer 			   Pi
 #			VCC ----------------- 3.3V
 #			GND ------------------ GND
 #			SIG ---------------- Pin 11
-#
+#	播放
 #---------------------------------------------------
 
 import RPi.GPIO as GPIO
@@ -24,24 +24,24 @@ CM = [0, 262, 294, 330, 350, 393, 441, 495]		# Frequency of Middle C notes
 CH = [0, 525, 589, 661, 700, 786, 882, 990]		# Frequency of High C notes
 
 song_1 = [	CM[3], CM[5], CM[6], CM[3], CM[2], CM[3], CM[5], CM[6], # Notes of song1
-			CH[1], CM[6], CM[5], CM[1], CM[3], CM[2], CM[2], CM[3], 
+			CH[1], CM[6], CM[5], CM[1], CM[3], CM[2], CM[2], CM[3],
 			CM[5], CM[2], CM[3], CM[3], CL[6], CL[6], CL[6], CM[1],
 			CM[2], CM[3], CM[2], CL[7], CL[6], CM[1], CL[5]	]
 
 beat_1 = [	1, 1, 3, 1, 1, 3, 1, 1, 			# Beats of song 1, 1 means 1/8 beats
-			1, 1, 1, 1, 1, 1, 3, 1, 
-			1, 3, 1, 1, 1, 1, 1, 1, 
-			1, 2, 1, 1, 1, 1, 1, 1, 
+			1, 1, 1, 1, 1, 1, 3, 1,
+			1, 3, 1, 1, 1, 1, 1, 1,
+			1, 2, 1, 1, 1, 1, 1, 1,
 			1, 1, 3	]
 
 song_2 = [	CM[1], CM[1], CM[1], CL[5], CM[3], CM[3], CM[3], CM[1], # Notes of song2
-			CM[1], CM[3], CM[5], CM[5], CM[4], CM[3], CM[2], CM[2], 
-			CM[3], CM[4], CM[4], CM[3], CM[2], CM[3], CM[1], CM[1], 
+			CM[1], CM[3], CM[5], CM[5], CM[4], CM[3], CM[2], CM[2],
+			CM[3], CM[4], CM[4], CM[3], CM[2], CM[3], CM[1], CM[1],
 			CM[3], CM[2], CL[5], CL[7], CM[2], CM[1]	]
 
 beat_2 = [	1, 1, 2, 2, 1, 1, 2, 2, 			# Beats of song 2, 1 means 1/8 beats
-			1, 1, 2, 2, 1, 1, 3, 1, 
-			1, 2, 2, 1, 1, 2, 2, 1, 
+			1, 1, 2, 2, 1, 1, 3, 1,
+			1, 2, 2, 1, 1, 2, 2, 1,
 			1, 2, 2, 1, 1, 3 ]
 
 def setup():

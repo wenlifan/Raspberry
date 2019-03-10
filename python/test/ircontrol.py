@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+# 使用红外遥控器控制小车
 import lirc as pylirc
 import time
 import RPi.GPIO as GPIO
@@ -26,7 +26,7 @@ def t_up(speed,t_time):
 	GPIO.output(BIN2,False)#BIN2
 	GPIO.output(BIN1,True) #BIN1
 	time.sleep(t_time)
-        
+
 def t_stop(t_time):
 	L_Motor.ChangeDutyCycle(0)
 	GPIO.output(AIN2,False)#AIN2
@@ -36,7 +36,7 @@ def t_stop(t_time):
 	GPIO.output(BIN2,False)#BIN2
 	GPIO.output(BIN1,False) #BIN1
 	time.sleep(t_time)
-        
+
 def t_down(speed,t_time):
 	L_Motor.ChangeDutyCycle(speed)
 	GPIO.output(AIN2,True)#AIN2
@@ -66,7 +66,7 @@ def t_right(speed,t_time):
 	GPIO.output(BIN2,True)#BIN2
 	GPIO.output(BIN1,False) #BIN1
 	time.sleep(t_time)
-        
+
 def keysacn():
     val = GPIO.input(BtnPin)
     while GPIO.input(BtnPin) == False:
@@ -80,7 +80,7 @@ def keysacn():
                 GPIO.output(Rpin,0)
         else:
             GPIO.output(Rpin,0)
-            
+
 def setup():
 	GPIO.setwarnings(False)
 	GPIO.setmode(GPIO.BCM)
@@ -110,12 +110,12 @@ def IR(config):
 	if config == 'KEY_VOLUMEUP':
 		t_down(50,0)
 		print 't_down'
-        
+
 def loop():
 	while True:
 		s = pylirc.nextcode()
 		while(s):
-			print s    			
+			print s
 			for (code) in s:
 				print 'Command: ', code
 				IR(code)
@@ -125,7 +125,7 @@ def loop():
 				s = []
 
 def destroy():
-	GPIO.cleanup()	
+	GPIO.cleanup()
 	# pylirc.exit()
 
 if __name__ == '__main__':

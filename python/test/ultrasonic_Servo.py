@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # coding=utf-8
+# 本模块用于测试时 cl_motion.py
 
 import sys
-sys.path.append('./MotorHAT/');
+sys.path.append('../class/');
 import MotorHAT
-from motion import Move
+from cl_motion import Move
 from MotorHAT.Adafruit_PWM_Servo_Driver import PWM
 import RPi.GPIO as GPIO
 import time
@@ -33,13 +34,13 @@ servoMax = 600  # Max pulse length out of 4096
 def setServoPulse(channel, pulse):
 	pulseLength = 1000000.0                   # 1,000,000 us per second
 	pulseLength /= 50.0                       # 60 Hz
-	print "%d us per period" % pulseLength
+	print ("%d us per period" % pulseLength)
 	pulseLength /= 4096.0                     # 12 bits of resolution
-	print "%d us per bit" % pulseLength
+	print ("%d us per bit" % pulseLength)
 	pulse *= 1000.0
 	pulse /= (pulseLength*1.0)
 	# pwmV=int(pluse)
-	print "pluse: %f  " % (pulse)
+	print ("pluse: %f  " % (pulse))
 	pwm.setPWM(channel, 0, int(pulse))
 
 #Angle to PWM

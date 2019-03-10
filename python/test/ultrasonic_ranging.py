@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# 超声波传感器,测距
 
 import RPi.GPIO as GPIO
 import time
@@ -19,7 +20,7 @@ def distance():
 	time.sleep(0.00001)
 	GPIO.output(TRIG, 0)
 
-	
+
 	while GPIO.input(ECHO) == 0:
 		a = 0
 	time1 = time.time()
@@ -33,8 +34,8 @@ def distance():
 def loop():
 	while True:
 		dis = distance()
-		print dis, 'cm'
-		print ''
+		print (dis, 'cm')
+		print ('')
 		time.sleep(0.3)
 
 def destroy():
