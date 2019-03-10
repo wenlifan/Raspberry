@@ -1,45 +1,27 @@
 #!/usr/bin/env python
+# coding=utf-8
 # 超声波传感器,测距
 
+import sys
 import RPi.GPIO as GPIO
 import time
+sys.path.append('../class/');
+from cl_ultrasonic import Ultrasonic
 
-TRIG = 20
-ECHO = 21
+# 实例化类
+MyUl = Ultrasonic()
 
 def setup():
-	GPIO.setmode(GPIO.BCM)
-	GPIO.setup(TRIG, GPIO.OUT)
-	GPIO.setup(ECHO, GPIO.IN)
+	MyUl.init_GPIO()
 
 def distance():
-	GPIO.output(TRIG, 0)
-	time.sleep(0.000002)
-
-	GPIO.output(TRIG, 1)
-	time.sleep(0.00001)
-	GPIO.output(TRIG, 0)
-
-
-	while GPIO.input(ECHO) == 0:
-		a = 0
-	time1 = time.time()
-	while GPIO.input(ECHO) == 1:
-		a = 1
-	time2 = time.time()
-
-	during = time2 - time1
-	return during * 340 / 2 * 100
+	MyUl.distance()
 
 def loop():
-	while True:
-		dis = distance()
-		print (dis, 'cm')
-		print ('')
-		time.sleep(0.3)
+	MyUl.loop()
 
 def destroy():
-	GPIO.cleanup()
+	MyUl.__del__()
 
 if __name__ == "__main__":
 	setup()
